@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Dope-Dealer
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<div class="paina" id="paina">
+    FREE SHIPPING ALL OVER INDIA | EARN LOYALTY POINTS WITH EVERY ORDER
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(202 206 235);">
+    <div class="container-fluid">
+      <a class="navbar-brand" id="navbar" href="#"><b>Dope-Dealer</b></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown"
+              aria-expanded="false">Men</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'shirts' %}">Shirts</a></li>
+              <li><a class="dropdown-item" href="{% url 'trousers' %}">Trousers</a></li>
+              <li><a class="dropdown-item" href="{% url 'shoes' %}">Shoes</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <!--<li><a class="dropdown-item" href="#">Male Cosmetics</a></li>-->
+              <li><a class="dropdown-item" href="{% url 'grooming' %}">Male Groomming Products</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown"
+              aria-expanded="false">Women</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'kurtis' %}">Kurtis</a></li>
+              <li><a class="dropdown-item" href="{% url 'sarees' %}">Sarees</a></li>
+              <li><a class="dropdown-item" href="{% url 'sandals' %}">Sandals</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="{% url 'beauty' %}">Beauty Products</a></li>
+              <li><a class="dropdown-item" href="{% url 'maternity' %}">Maternity Products</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Kids
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'boys' %}">Boys</a></li>
+              <li><a class="dropdown-item" href="{% url 'girls' %}">Girls</a></li>
+              <li><a class="dropdown-item" href="{% url 'infants' %}">Infants</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="{% url 'toys' %}">Toys</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Contact Us
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="https://www.instagram.com/aashirrahmedd/">Aashir Ahmed Jalili</a></li>
+              <li><a class="dropdown-item" href="https://www.instagram.com/manikanta_adapa/">Manikanta</a></li>
+              <li><a class="dropdown-item" href="#anirudhcontact">Anirudh Cidiri</a></li>
+              <li><a class="dropdown-item" href="https://www.instagram.com/syed.ashraf1843/">Syed Ashraf</a></li>
+              <li><a class="dropdown-item" href="https://www.instagram.com/karthikeyauppu/">Uppu Karthikeya</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" method="get" role="search">
+          <input class="form-control me-2" name="user_query" type="search" placeholder="Search....." aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>&nbsp&nbsp
+          {% if user.is_authenticated %}
+          <div class="btn-group me-2" role="group" aria-label="Second group">
+            <a href="{% url 'logout' %}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Logout</a>
+            <a href="{% url 'login' %}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Cart</a>            
+          </div>
+          <a class="nav-link disabled" aria-current="page">{{user.first_name}}</a>
+          {% else %}
+          <div class="btn-group me-2" role="group" aria-label="Second group">
+            <a href="{% url 'login' %}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Login</a>
+            <a href="{% url 'signup' %}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Signup</a>           
+          </div>
+          {% endif %}
+            {% comment %} <a href="cart.html" class=""><span class='bi bi-cart' style='color: blue; font-size:30px;'></span></a> {% endcomment %}
+          
+          
+        </form>
+      </div>
+    </div>
+  </nav>
+  {% block content %}
+  {% endblock %}
+
+  <footer class="py-5">
+    CONNECT WITH US 
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="https://www.youtube.com/" class="nav-link px-2 text-muted"><i class="bi bi-youtube" style="color: cornflowerblue; font-size: 30px;"></i></a></li>
+      <li class="nav-item"><a href="https://www.twitter.com/" class="nav-link px-2 text-muted"><i class="bi bi-twitter" style="color: cornflowerblue; font-size: 30px;"></i></a></li>
+      <li class="nav-item"><a href="https://www.facebook.com/" class="nav-link px-2 text-muted"><i class="bi bi-facebook" style="color: cornflowerblue; font-size: 30px;"></i></a></li>
+      <li class="nav-item"><a href="https://www.instagram.com/" class="nav-link px-2 text-muted"><i class="bi bi-instagram" style="color: cornflowerblue; font-size: 30px;"></i></a></li>
+      <li class="nav-item"><a href="https://www.pinterest.com/" class="nav-link px-2 text-muted"><i class="bi bi-pinterest" style="color: cornflowerblue; font-size: 30px;"></i></a></li>
+    </ul>
+    <p>© 2022 Company, Inc</p>
+    
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <!-- Code injected by live-server -->
+
+  </script>
+</body>
+
+</html>
