@@ -39,28 +39,27 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown"
               aria-expanded="false">Men</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{% url 'shirts' %}">Shirts</a></li>
-              <li><a class="dropdown-item" href="{% url 'trousers' %}">Trousers</a></li>
-              <li><a class="dropdown-item" href="{% url 'shoes' %}">Shoes</a></li>
-              <li>
+              <li><a class="dropdown-item" href="{% url 'show_category' category='shirts' %}">Shirts</a></li>
+              <li><a class="dropdown-item" href="{% url 'show_category' category='tshirts' %}">T-Shirts</a></li>
+              <li><a class="dropdown-item" href="{% url 'show_category' category='suits' %}">Suits</a></li>
+              <li><a class="dropdown-item" href="{% url 'show_category' category='trousers' %}">Trousers</a></li>
+              <li><a class="dropdown-item" href="{% url 'show_category' category='jeans' %}">Jeans</a></li>
+              <li><a class="dropdown-item" href="{% url 'show_category' category='shoes' %}">Shoes</a></li>
+              <li><a class="dropdown-item" href="{% url 'show_category' category='flipflops' %}">Flip Flops</a></li>
+              {% comment %} <li>
                 <hr class="dropdown-divider">
               </li>
               <!--<li><a class="dropdown-item" href="#">Male Cosmetics</a></li>-->
-              <li><a class="dropdown-item" href="{% url 'grooming' %}">Male Groomming Products</a></li>
+              <li><a class="dropdown-item disabled" href="">Male Groomming Products</a></li> {% endcomment %}
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown"
               aria-expanded="false">Women</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{% url 'kurtis' %}">Kurtis</a></li>
-              <li><a class="dropdown-item" href="{% url 'sarees' %}">Sarees</a></li>
-              <li><a class="dropdown-item" href="{% url 'sandals' %}">Sandals</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="{% url 'beauty' %}">Beauty Products</a></li>
-              <li><a class="dropdown-item" href="{% url 'maternity' %}">Maternity Products</a></li>
+              <li><a class="dropdown-item" href="{% url 'show_category' category='kurtis' %}">Kurtis</a></li>
+              <li><a class="dropdown-item" href="{% url 'show_category' category='sarees' %}">Sarees</a></li>
+              <li><a class="dropdown-item" href="{% url 'show_category' category='sandals' %}">Sandals</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -69,14 +68,9 @@
               Kids
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{% url 'boys' %}">Boys</a></li>
-              <li><a class="dropdown-item" href="{% url 'girls' %}">Girls</a></li>
-              <li><a class="dropdown-item" href="{% url 'infants' %}">Infants</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="{% url 'toys' %}">Toys</a></li>
-            </ul>
+              <li><a class="dropdown-item" href="{% url 'show_category' category='outfits' %}">Outfits</a></li>
+              <li><a class="dropdown-item" href="{% url 'show_category' category='toys' %}">toys</a></li>
+              </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown"

@@ -22,3 +22,10 @@ class Destination(models.Model):
     img = models.ImageField(upload_to='media/')
     
 
+class ProductsOffered(models.Model):
+    name = models.CharField(max_length=100)
+    label = models.CharField(max_length=10)
+    category = models.CharField(max_length=100)
+    price = models.IntegerField()
+    st = models.IntegerField()
+    img = models.ImageField(upload_to='media/')

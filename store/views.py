@@ -1,48 +1,27 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import models
 
-# Create your views here.
+results=models.ProductsOffered.objects
+categories_list = models.ProductsOffered.objects.values_list('category', flat=True).distinct()
+
 def home(request):
     dests = models.Destination.objects.all()
-
     return render(request, 'store/index.html', {'dests' : dests})
 
-def beauty(request):
-    return render(request, 'store/beauty.html')
 
-def boys(request):
-    return render(request, 'store/boys.html')
+def show_category(request, category):
+    if category in categories_list:
+        data = results.filter(category=category)
+        product = data.first()
+        if product:
+            label = product.label
+        else:
+            label = None
 
-def girls(request):
-    return render(request, 'store/girls.html')
+        context = {'category_data': data, 'category_name': category.capitalize(), 'label_name': label.capitalize()}
 
-def grooming(request):
-    return render(request, 'store/grooming.html')
+    else:
+        return redirect("..")
 
-def infants(request):
-    return render(request, 'store/infants.html')
-
-def kurtis(request):
-    return render(request, 'store/kurtis.html')
-
-def maternity(request):
-    return render(request, 'store/maternity.html')
-
-def sandals(request):
-    return render(request, 'store/sandals.html')
-
-def sarees(request):
-    return render(request, 'store/sarees.html')
-
-def shirts(request):
-    return render(request, 'store/shirts.html')
-
-def shoes(request):
-    return render(request, 'store/shoes.html')
-
-def toys(request):
-    return render(request, 'store/toys.html')
-
-def trousers(request):
-    return render(request, 'store/trousers.html')
+    return render(request, 'store/categories.html', context)
 
