@@ -44,3 +44,6 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
+def cart(request):
+    return render(request, 'customers/cart.html')
+

@@ -74,3 +74,9 @@ footer {
 .row>*{
     margin: auto;
 }
+
+.cart{
+    max-height: 2000px;
+    min-height: 2000px;
+    
+}

@@ -92,7 +92,7 @@
           {% if user.is_authenticated %}
           <div class="btn-group me-2" role="group" aria-label="Second group">
             <a href="{% url 'logout' %}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Logout</a>
-            <a href="{% url 'login' %}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Cart</a>            
+            <a href="{% url 'cart' %}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Cart</a>            
           </div>
           <a class="nav-link disabled" aria-current="page">{{user.first_name}}</a>
           {% else %}
