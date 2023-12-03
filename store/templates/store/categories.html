@@ -73,9 +73,12 @@
         <div class="card-body">
           <h5 class="card-title">{{i.name}}</h5>
           <p class="card-text">Rs. {{i.price}}</p>
-          <button type="button" class="btn btn-outline-danger btn-sm">
-            <span class="bi bi-cart"> </span>Add to cart
-          </button>
+          <form action="{% url 'add-to-cart' i.id %}" method="post"> 
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger btn-sm">
+              <span class="bi bi-cart"> </span>Add to cart
+            </button>
+          </form>
         </div>
       </div>
     </div>

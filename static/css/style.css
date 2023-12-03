@@ -75,8 +75,7 @@ footer {
     margin: auto;
 }
 
-.cart{
-    max-height: 2000px;
-    min-height: 2000px;
-    
+.cart-img{
+    height: 360px !important;
+    width: 240px !important;
 }

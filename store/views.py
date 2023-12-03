@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from . import models
+from django.contrib.auth.decorators import login_required
 
 results=models.ProductsOffered.objects
 categories_list = results.values_list('category', flat=True).distinct()
@@ -26,4 +27,35 @@ def show_category(request, category):
         return redirect("..")
 
     return render(request, 'store/categories.html', context)
+
+@login_required(login_url='login')
+def add_to_cart(request, product_id):
+    product = models.ProductsOffered.objects.get(pk=product_id)
+    cart, created = models.Cart.objects.get_or_create(user=request.user)
+    cart_item, item_created = models.CartItem.objects.get_or_create(cart=cart, product=product)
+    
+    if not item_created:
+        cart_item.quantity += 1
+        cart_item.save()
+    
+    return redirect('..')
+
+@login_required(login_url='login')
+def remove_from_cart(request, product_id):
+    product = models.ProductsOffered.objects.get(pk=product_id)
+    cart = models.Cart.objects.get(user=request.user)
+    try:
+        cart_item = cart.cartitem_set.get(product=product)
+        if cart_item.quantity >= 1:
+             cart_item.delete()
+    except models.CartItem.DoesNotExist:
+        pass
+    
+    return redirect('cart')
+
+@login_required(login_url='login')
+def view_cart(request):
+    cart = request.user.cart
+    cart_items = models.CartItem.objects.filter(cart=cart)
+    return render(request, 'store/cart.html', {'cart_items': cart_items})
 
